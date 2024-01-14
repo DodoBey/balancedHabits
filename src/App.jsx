@@ -8,6 +8,7 @@ import Login from './components/Login';
 import Profile from './components/Profile';
 import Error from './components/Error';
 import Welcome from './components/Welcome';
+import ForgotPassword from './components/ForgotPassword';
 
 const router = createBrowserRouter([
   {
@@ -26,6 +27,10 @@ const router = createBrowserRouter([
       {
         path: 'login',
         element: <Login />,
+      },
+      {
+        path: 'forgotpassword',
+        element: <ForgotPassword />,
       },
       {
         path: 'dailyintake',

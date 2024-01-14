@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import MainLogo from '../assets/logo.png';
 
 const Register = () => {
@@ -111,13 +112,13 @@ const Register = () => {
           </form>
 
           <p className='mt-10 text-center text-sm text-gray-500'>
-            Not a member?{' '}
-            <a
-              href='#'
+            Already have an account?{' '}
+            <Link
+              to={'/login'}
               className='font-semibold leading-6 text-green-600 hover:text-green-500'
             >
-              Register Free
-            </a>
+              Login
+            </Link>
           </p>
         </div>
       </div>

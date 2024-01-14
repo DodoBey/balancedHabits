@@ -1,18 +1,19 @@
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { Fragment, useState } from 'react';
-import { Dialog, Popover, Tab, Transition } from '@headlessui/react';
+import { Dialog, Popover, Transition } from '@headlessui/react';
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
 import MainLogo from '../assets/logo.png';
 
 const navigation = {
   pages: [
-    { name: 'DailyIntake', href: 'dailyintake' },
-    { name: 'Profile', href: 'profile' },
+    { name: 'DailyIntake', href: '/dailyintake' },
+    { name: 'Profile', href: '/profile' },
   ],
 };
 
 const Header = () => {
   const [mobileNavOpen, setMobileNavOpen] = useState(false);
+  const { pathname } = useLocation();
 
   return (
     <>
@@ -71,8 +72,9 @@ const Header = () => {
                         className='flow-root'
                       >
                         <Link
-                          href={page.href}
+                          to={page.href}
                           className='-m-2 block p-2 font-medium text-gray-900'
+                          onClick={() => setMobileNavOpen(false)}
                         >
                           {page.name}
                         </Link>
@@ -82,12 +84,13 @@ const Header = () => {
 
                   <div className='space-y-6 border-t border-gray-200 px-4 py-6'>
                     <div className='flow-root'>
-                      <a
-                        href='#'
+                      <Link
+                        to={'/login'}
                         className='-m-2 block p-2 font-medium text-gray-900'
+                        onClick={() => setMobileNavOpen(false)}
                       >
-                        Sign in
-                      </a>
+                        Login
+                      </Link>
                     </div>
                   </div>
                 </Dialog.Panel>
@@ -144,12 +147,12 @@ const Header = () => {
 
                 <div className='ml-auto flex items-center'>
                   <div className='hidden lg:flex lg:flex-1 lg:items-center lg:justify-end lg:space-x-6'>
-                    <a
-                      href='#'
+                    <Link
+                      to={'/login'}
                       className='text-sm font-medium text-gray-700 hover:text-gray-800'
                     >
-                      Sign in
-                    </a>
+                      Login
+                    </Link>
                   </div>
                 </div>
               </div>
