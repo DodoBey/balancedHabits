@@ -1,7 +1,7 @@
 const IntakeCard = ({ title, bgColor, data }) => {
   return (
     <div
-      className={`w-full ml-2 max-h-96 max-w-xs p-4 bg-${bgColor}-500 border border-gray-200 rounded-lg shadow sm:p-8 overflow-y-auto`}
+      className={`w-full md:ml-2 h-60 max-w-xs p-4 ${bgColor} border border-gray-200 rounded-lg shadow sm:p-8 overflow-y-auto`}
     >
       <div className='flex items-center justify-between mb-4'>
         <h5 className='text-xl font-bold leading-none text-gray-900'>
