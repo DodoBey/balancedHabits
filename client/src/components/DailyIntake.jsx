@@ -61,7 +61,7 @@ const DailyIntake = () => {
                     className='w-3 h-3 text-green-600 bg-gray-100 border-gray-300 focus:ring-green-500 focus:ring-2 '
                   />
                   <label
-                    htmlFor='bordered-radio-1'
+                    htmlFor='blue'
                     className='w-full py-4 ms-2 text-sm font-medium text-blue-900 '
                   >
                     Blue Pill - High Quality Ingredient
@@ -77,7 +77,7 @@ const DailyIntake = () => {
                     className='w-4 h-4 text-green-600 bg-gray-100 border-gray-300 focus:ring-green-500 focus:ring-2'
                   />
                   <label
-                    htmlFor='bordered-radio-2'
+                    htmlFor='red'
                     className='w-full py-4 ms-2 text-sm font-medium text-red-900'
                   >
                     Red Pill - Low Quality Ingredient
