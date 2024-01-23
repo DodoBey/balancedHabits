@@ -1,5 +1,9 @@
 import { body, param, validationResult } from 'express-validator';
-import { BadRequestError, NotFoundError } from '../errors/errorHandlers.js';
+import {
+  BadRequestError,
+  NotFoundError,
+  UnauthorizedError,
+} from '../errors/errorHandlers.js';
 import mongoose from 'mongoose';
 import Intake from '../models/IntakeModel.js';
 import User from '../models/UserModel.js';
@@ -11,8 +15,11 @@ const validationErrors = (validateValues) => {
       const errors = validationResult(req);
       if (!errors.isEmpty()) {
         const errorMessages = errors.array().map((error) => error.msg);
-        if (errorMessages[0].startsWith('No job')) {
+        if (errorMessages[0].startsWith('No intake')) {
           throw new NotFoundError(errorMessages);
+        }
+        if (errorMessages[0].startsWith('Not authorized')) {
+          throw new UnauthorizedError('Not authorized');
         }
         throw new BadRequestError(errorMessages);
       } else {
@@ -28,11 +35,13 @@ export const validateIntakeInput = validationErrors([
 ]);
 
 export const validateId = validationErrors([
-  param('id').custom(async (value) => {
+  param('id').custom(async (value, { req }) => {
     const isValidId = mongoose.Types.ObjectId.isValid(value);
     if (!isValidId) throw new BadRequestError('Invalid MongdoDB id');
     const intake = await Intake.findById(value);
-    if (!intake) throw new NotFoundError('No job find with the given id');
+    if (!intake) throw new NotFoundError('No intake find with the given id');
+    const isValidUser = req.user.userId === intake.createdBy.toString();
+    if (!isValidUser) throw new UnauthorizedError('Not authorized');
   }),
 ]);
 
