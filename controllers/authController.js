@@ -1,8 +1,8 @@
 import { StatusCodes } from 'http-status-codes';
 import User from '../models/UserModel.js';
-import bcrypt from 'bcryptjs';
 import { comparePassword, hashpassword } from '../utils/passwordUtils.js';
 import { UnauthenticatedError } from '../errors/errorHandlers.js';
+import { createToken } from '../utils/tokenUtils.js';
 
 export const register = async (req, res) => {
   const hashedPassword = await hashpassword(req.body.password);
@@ -21,5 +21,14 @@ export const login = async (req, res) => {
 
   if (!isValidUser) throw new UnauthenticatedError('Invalid email or password');
 
-  res.send('Succesfully logged in');
+  const token = createToken({ userId: user._id });
+
+  const dayInMs = 1000 * 60 * 60 * 24;
+
+  res.cookie('authToken', token, {
+    httpOnly: true,
+    expires: new Date(Date.now() + dayInMs),
+    secure: process.env.NODE_ENV === 'production',
+  });
+  res.status(StatusCodes.OK).json({ message: 'User succesfully logged in' });
 };
