@@ -60,7 +60,7 @@ export const validateRegisterInputs = validationErrors([
     .notEmpty()
     .withMessage('Password is required')
     .isLength({ min: 8 })
-    .withMessage('Passwrod must be at least 8 characters long'),
+    .withMessage('Password must be at least 8 characters long'),
 ]);
 
 export const validateLoginInputs = validationErrors([

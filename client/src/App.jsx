@@ -10,6 +10,8 @@ import Error from './components/Error';
 import Welcome from './components/Welcome';
 import ForgotPassword from './components/ForgotPassword';
 
+import { action as registerAction } from './components/Register';
+
 const router = createBrowserRouter([
   {
     path: '/',
@@ -23,6 +25,7 @@ const router = createBrowserRouter([
       {
         path: 'register',
         element: <Register />,
+        action: registerAction,
       },
       {
         path: 'login',

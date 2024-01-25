@@ -11,7 +11,7 @@ const IntakeCard = ({ title, bgColor, data }) => {
       <div className='flow-root'>
         <ul
           role='list'
-          className='divide-y divide-gray-200 dark:divide-gray-700'
+          className='divide-y divide-gray-200'
         >
           {data.map((item) => {
             return (

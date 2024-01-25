@@ -4,11 +4,11 @@ import Footer from './Footer';
 
 const LandingPage = () => {
   return (
-    <>
+    <div className='min-h-screen'>
       <Header />
       <Outlet />
       <Footer />
-    </>
+    </div>
   );
 };
 export default LandingPage;
