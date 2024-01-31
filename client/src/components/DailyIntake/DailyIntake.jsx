@@ -3,7 +3,7 @@ import IntakeCard from '../Common/IntakeCard';
 import Body from '../Common/Body';
 import fetchUtil from '../../utils/request';
 import { toast } from 'react-toastify';
-import { useUserContext } from '../../context/userContext';
+import { useUserContext } from '../../context/UserContext';
 
 const DailyIntake = () => {
   const [newIntake, setNewIntake] = useState('');

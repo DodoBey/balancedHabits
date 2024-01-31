@@ -8,7 +8,7 @@ import {
 import MainLogo from '../../assets/logo.png';
 import fetchUtil from '../../utils/request';
 import { toast } from 'react-toastify';
-import { useUserContext } from '../../context/userContext';
+import { useUserContext } from '../../context/UserContext';
 import { useEffect } from 'react';
 
 export const action = async ({ request }) => {

@@ -3,7 +3,7 @@ import Header from '../../Header/Header';
 import Footer from '../../Footer/Footer';
 import { useEffect } from 'react';
 import fetchUtil from '../../../utils/request';
-import { useUserContext } from '../../../context/userContext';
+import { useUserContext } from '../../../context/UserContext';
 
 export const loader = async () => {
   try {

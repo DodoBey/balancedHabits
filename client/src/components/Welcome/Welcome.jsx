@@ -1,6 +1,6 @@
 import { Link, useNavigate } from 'react-router-dom';
 import BGTop from '../Common/BGTop';
-import { useUserContext } from '../../context/userContext';
+import { useUserContext } from '../../context/UserContext';
 import { useEffect } from 'react';
 import SuspenseFallback from '../Common/SuspenseFallback';
 

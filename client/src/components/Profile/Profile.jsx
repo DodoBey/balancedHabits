@@ -1,4 +1,4 @@
-import { useUserContext } from '../../context/userContext';
+import { useUserContext } from '../../context/UserContext';
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
 import './Profile.css';
