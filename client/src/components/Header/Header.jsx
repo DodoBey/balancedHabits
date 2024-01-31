@@ -1,19 +1,52 @@
-import { Link, useLocation } from 'react-router-dom';
-import { Fragment, useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { Fragment, useMemo, useState } from 'react';
 import { Dialog, Popover, Transition } from '@headlessui/react';
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
-import MainLogo from '../assets/logo.png';
+import MainLogo from '../../assets/logo.png';
+import fetchUtil from '../../utils/request';
+import { toast } from 'react-toastify';
+import { useUserContext } from '../../context/userContext';
 
 const navigation = {
   pages: [
     { name: 'DailyIntake', href: '/dailyintake' },
-    { name: 'Profile', href: '/profile' },
+    { name: 'Profile', href: '/dailyintake/profile' },
   ],
 };
 
 const Header = () => {
   const [mobileNavOpen, setMobileNavOpen] = useState(false);
-  const { pathname } = useLocation();
+  const navigate = useNavigate();
+  const { currentUser, setCurrentUser } = useUserContext();
+
+  const logoutHandler = async () => {
+    setCurrentUser(undefined);
+    navigate('/');
+    await fetchUtil.get('/auth/logout');
+    toast.success('User Succesfully Logged Out');
+  };
+
+  const linkProps = useMemo(() => {
+    if (currentUser?.user !== undefined) {
+      return (
+        <Link
+          onClick={logoutHandler}
+          className='text-sm font-medium text-gray-700 hover:text-gray-800'
+        >
+          Logout
+        </Link>
+      );
+    } else {
+      return (
+        <Link
+          to='/login'
+          className='text-sm font-medium text-gray-700 hover:text-gray-800'
+        >
+          Login
+        </Link>
+      );
+    }
+  }, [currentUser?.user]);
 
   return (
     <>
@@ -83,15 +116,7 @@ const Header = () => {
                   </div>
 
                   <div className='space-y-6 border-t border-gray-200 px-4 py-6'>
-                    <div className='flow-root'>
-                      <Link
-                        to={'/login'}
-                        className='-m-2 block p-2 font-medium text-gray-900'
-                        onClick={() => setMobileNavOpen(false)}
-                      >
-                        Login
-                      </Link>
-                    </div>
+                    <div className='flow-root'>{linkProps}</div>
                   </div>
                 </Dialog.Panel>
               </Transition.Child>
@@ -120,7 +145,7 @@ const Header = () => {
                 </button>
 
                 {/* Logo */}
-                <div className='ml-4 flex lg:ml-0'>
+                <div className='ml-auto flex lg:ml-0'>
                   <Link to={'/'}>
                     <img
                       className='h-8 w-auto'
@@ -134,26 +159,19 @@ const Header = () => {
                 <Popover.Group className='hidden lg:ml-8 lg:block lg:self-stretch'>
                   <div className='flex h-full space-x-8'>
                     {navigation.pages.map((page) => (
-                      <a
+                      <Link
                         key={page.name}
-                        href={page.href}
+                        to={page.href}
                         className='flex items-center text-sm font-medium text-gray-700 hover:text-gray-800'
                       >
                         {page.name}
-                      </a>
+                      </Link>
                     ))}
                   </div>
                 </Popover.Group>
 
-                <div className='ml-auto flex items-center'>
-                  <div className='hidden lg:flex lg:flex-1 lg:items-center lg:justify-end lg:space-x-6'>
-                    <Link
-                      to={'/login'}
-                      className='text-sm font-medium text-gray-700 hover:text-gray-800'
-                    >
-                      Login
-                    </Link>
-                  </div>
+                <div className='hidden lg:flex lg:flex-1 lg:items-center lg:justify-end lg:space-x-6'>
+                  {linkProps}
                 </div>
               </div>
             </div>

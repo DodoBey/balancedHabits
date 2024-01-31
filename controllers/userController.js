@@ -1,6 +1,5 @@
 import { StatusCodes } from 'http-status-codes';
 import User from '../models/UserModel.js';
-import Intake from '../models/IntakeModel.js';
 
 export const getUser = async (req, res) => {
   const { userId } = req.user;
