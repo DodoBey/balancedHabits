@@ -9,10 +9,18 @@ export const getAllIntakes = async (req, res) => {
 };
 
 export const newIntake = async (req, res) => {
-  const { intake, pill } = req.body;
+  const { intake, pill, date } = req.body;
   const createdBy = req.user.userId;
-  const date = new Date().toISOString().split('T')[0];
-  const newIntake = await Intake.create({ intake, pill, date, createdBy });
+  // const date = new Date();
+  // const formattedDate = `${
+  //   date.getMonth() + 1
+  // }/${date.getDate()}/${date.getFullYear()}`;
+  const newIntake = await Intake.create({
+    intake,
+    pill,
+    date,
+    createdBy,
+  });
   res.status(StatusCodes.CREATED).json({ newIntake });
 };
 

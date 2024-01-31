@@ -1,7 +1,15 @@
-import { Form, Link, redirect, useNavigation } from 'react-router-dom';
-import MainLogo from '../assets/logo.png';
-import fetchUtil from '../utils/request';
+import {
+  Form,
+  Link,
+  redirect,
+  useNavigation,
+  useNavigate,
+} from 'react-router-dom';
+import MainLogo from '../../assets/logo.png';
+import fetchUtil from '../../utils/request';
 import { toast } from 'react-toastify';
+import { useUserContext } from '../../context/userContext';
+import { useEffect } from 'react';
 
 export const action = async ({ request }) => {
   const formData = await request.formData();
@@ -22,8 +30,17 @@ export const action = async ({ request }) => {
 };
 
 const Register = () => {
-  const navigate = useNavigation();
-  console.log(navigate);
+  const navigate = useNavigate();
+  const { currentUser } = useUserContext();
+
+  useEffect(() => {
+    if (currentUser?.user !== undefined) {
+      navigate('/dailyintake');
+    }
+  }, []);
+
+  const navigation = useNavigation();
+  const submitting = navigation.state === 'submitting';
 
   return (
     <>
@@ -127,9 +144,10 @@ const Register = () => {
             <div>
               <button
                 type='submit'
+                disabled={submitting}
                 className='flex w-full justify-center rounded-md bg-green-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-green-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-600'
               >
-                Register
+                {submitting ? 'Registering...' : 'Register'}
               </button>
             </div>
           </Form>

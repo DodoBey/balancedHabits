@@ -1,5 +1,5 @@
 import { memo, useMemo, useState } from 'react';
-import { comments } from '../constants/comments';
+import { comments } from '../../constants/comments';
 
 const Body = ({ blueLength, redLength }) => {
   const [comment, setComment] = useState('');
@@ -85,6 +85,9 @@ const Body = ({ blueLength, redLength }) => {
 
   return (
     <>
+      <h2 className='text-center font-bold text-lg mt-6 mb-6'>
+        Green Body, Healthy Mind
+      </h2>
       <svg
         width='256px'
         height='256px'
