@@ -21,6 +21,20 @@ import { authenticateUser } from './middlewares/authMiddleware.js';
 dotenv.config();
 const app = express();
 
+app.use((req, res, next) => {
+  res.setHeader('Access-Control-Allow-Origin', '*'); // that allows any client
+  res.setHeader(
+    'Access-Control-Allow-Methods',
+    'GET, POST, PUT, PATCH, DELETE'
+  ); //This allows methods to be used by clients
+  res.setHeader(
+    'Access-Control-Allow-Headers',
+    'Content-Type',
+    'Authorization'
+  ); //This allows headers to be set by clients and add an auth
+  next();
+});
+
 const __dirname = dirname(fileURLToPath(import.meta.url));
 if (process.env.NODE_ENV === 'development') {
   app.use(morgan('dev'));
