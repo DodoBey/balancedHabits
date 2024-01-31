@@ -22,7 +22,7 @@ import { action as registerAction } from './components/Register/Register';
 import { action as loginAction } from './components/Login/Login';
 import { loader as landingLoader } from './components/Layout/LandingLayout/LandingLayout';
 import UserContextProvider from './context/UserContext';
-import SuspenseFallback from './components/common/SuspenseFallback';
+import SuspenseFallback from './components/Common/SuspenseFallback';
 
 const router = createBrowserRouter([
   {
