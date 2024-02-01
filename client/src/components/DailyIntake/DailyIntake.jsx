@@ -137,7 +137,7 @@ const DailyIntake = () => {
                 </button>
               </form>
             </div>
-            <div className='grid gap-6 mb-6 px-2 grid-cols-2 justify-center m-auto'>
+            <div className='grid gap-6 mb-6 px-2 grid-cols-2 justify-center'>
               <IntakeCard
                 bgColor={'bg-green-400'}
                 title={'High Quality'}
