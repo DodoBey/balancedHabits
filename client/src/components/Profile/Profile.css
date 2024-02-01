@@ -6,6 +6,10 @@
   background: #16a34a !important;
 }
 
+.react-calendar__tile--hasActive {
+  background: #22c55e !important;
+}
+
 .react-calendar__tile:enabled:hover {
   background: #16a34a !important;
 }

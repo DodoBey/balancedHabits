@@ -19,6 +19,10 @@ const Profile = () => {
   const [username, setUsername] = useState(userName);
   const formattedDate = selectedDate.toLocaleDateString();
 
+  function onActiveStartDateChange({ activeStartDate: nextActiveStartDate }) {
+    setselectedDate(nextActiveStartDate);
+  }
+
   const intakesOnSelectedDays = useMemo(() => {
     return userIntakes?.filter((intake) => intake.date === formattedDate);
   }, [formattedDate, userIntakes]);
@@ -147,10 +151,7 @@ const Profile = () => {
                 activeStartDate={selectedDate}
                 defaultValue={selectedDate}
                 onChange={setselectedDate}
-                prev2Label={null}
-                prevLabel={null}
-                nextLabel={null}
-                next2Label={null}
+                onActiveStartDateChange={onActiveStartDateChange}
               />
               <div className='grid gap-6 mb-6 px-2 grid-cols-2 mx-auto'>
                 <IntakeCard
