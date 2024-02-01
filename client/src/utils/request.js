@@ -1,9 +1,7 @@
 import axios from 'axios';
 
-const url = '/api/v1';
-
 const fetchUtil = axios.create({
-  baseURL: url,
+  baseURL: import.meta.env.VITE_BASE_URL,
 });
 
 export default fetchUtil;
