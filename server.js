@@ -3,6 +3,7 @@ import * as dotenv from 'dotenv';
 import morgan from 'morgan';
 import mongoose from 'mongoose';
 import cookieParser from 'cookie-parser';
+const cors = require('cors');
 
 // routers
 import intakeRouter from './routes/intakeRouter.js';
@@ -20,6 +21,7 @@ import { authenticateUser } from './middlewares/authMiddleware.js';
 
 dotenv.config();
 const app = express();
+app.use(cors());
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 if (process.env.NODE_ENV === 'development') {
