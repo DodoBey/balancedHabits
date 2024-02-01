@@ -1,4 +1,4 @@
-**This is a basic Full Stack habit tracker APP, created due to a request from my dietitian wife, the idea was to keep a record of every intake daily based on the quality of the things we consume. As a user, the goal is to motivate yourself to reduce low-quality foods while you are tracking the process in the app**.
+**This is a Full Stack habit tracker APP, created due to a request from my dietitian wife, the idea was to keep a record of every intake daily based on the quality of the things we consume. As a user, the goal is to motivate yourself to reduce low-quality foods while you are tracking the process in the app**.
 
 ## Tech Stack
 
