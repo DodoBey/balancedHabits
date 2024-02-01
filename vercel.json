@@ -1,6 +1,6 @@
 {
   "name": "balanced-habits",
   "routes": [
-    { "src": "/(.*)", "dest": "/server.js" }
+    { "src": "/[^.]+", "dest": "/server.js" }
   ]
 }
