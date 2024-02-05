@@ -1,4 +1,4 @@
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { Fragment, useMemo, useState } from 'react';
 import { Dialog, Popover, Transition } from '@headlessui/react';
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
@@ -18,6 +18,7 @@ const Header = () => {
   const [mobileNavOpen, setMobileNavOpen] = useState(false);
   const navigate = useNavigate();
   const { currentUser, setCurrentUser } = useUserContext();
+  const { pathname } = useLocation();
 
   const logoutHandler = async () => {
     setCurrentUser(undefined);
@@ -162,7 +163,9 @@ const Header = () => {
                       <Link
                         key={page.name}
                         to={page.href}
-                        className='flex items-center text-sm font-medium text-gray-700 hover:text-gray-800'
+                        className={`flex items-center text-sm font-medium text-gray-700 hover:text-gray-800 ${
+                          pathname === page.href && 'underline decoration-2'
+                        }`}
                       >
                         {page.name}
                       </Link>

@@ -68,7 +68,7 @@ const DailyIntake = () => {
         </div>
       </header>
       <div className='container mx-auto'>
-        <main className='grid gap-6 mb-6 md:grid-cols-2'>
+        <main className='grid gap-6 mb-6 lg:grid-cols-2'>
           <div>
             <div className='mx-auto max-w-7xl py-6 px-6 lg:px-8'>
               <form>
@@ -131,7 +131,7 @@ const DailyIntake = () => {
                   type='button'
                   disabled={buttonIsDisabled}
                   onClick={onSubmitHandler}
-                  className='text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center disabled:bg-gray-300 disabled:cursor-not-allowed'
+                  className='text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm w-full px-5 py-2.5 text-center disabled:bg-gray-300 disabled:cursor-not-allowed'
                 >
                   Submit
                 </button>
