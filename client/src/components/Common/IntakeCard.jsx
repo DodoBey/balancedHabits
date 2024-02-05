@@ -1,6 +1,7 @@
 import { memo } from 'react';
 import fetchUtil from '../../utils/request';
 import { toast } from 'react-toastify';
+import { v4 } from 'uuid';
 
 const IntakeCard = ({ title, bgColor, data, profile, getUserIntakes }) => {
   const deleteHandler = async (id) => {
@@ -16,9 +17,7 @@ const IntakeCard = ({ title, bgColor, data, profile, getUserIntakes }) => {
 
   return (
     <div
-      className={`w-48 ${
-        !profile && 'lg:w-72'
-      } md:ml-6 h-60 p-4 ${bgColor} border border-gray-200 rounded-lg shadow sm:p-8 overflow-y-auto`}
+      className={` md:ml-6 h-60 p-4 ${bgColor} border border-gray-200 rounded-lg shadow sm:p-8 overflow-y-auto`}
     >
       <div className='flex items-center justify-between mb-4'>
         <h5 className='text-xl font-bold leading-none text-gray-900'>
@@ -36,7 +35,7 @@ const IntakeCard = ({ title, bgColor, data, profile, getUserIntakes }) => {
                 className={`py-3 sm:py-4 flex justify-between group ${
                   !profile && 'hover:cursor-pointer'
                 } `}
-                key={Math.random()}
+                key={v4()}
                 {...(!profile && { onClick: () => deleteHandler(item._id) })}
               >
                 <p className='text-sm font-medium text-gray-900 truncate'>
