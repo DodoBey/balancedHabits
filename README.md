@@ -24,10 +24,10 @@
 
 
 ### Future Updates
-- [ ] Will implement UUID package to create unique id's for the lists
+- [x] Will implement UUID package to create unique id's for the lists
 - [ ] Email confirmation
 - [ ] Forgot password functionality
-- [ ] Animation and transition on body svg when filling it
+- [ ] Animation and transition on body SVG when filling it
 - [ ] User picture update functionality
 - [ ] Some visual improvements
 - [ ] Required improvements based on feedback
