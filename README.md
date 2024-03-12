@@ -1,5 +1,11 @@
 **This is a Full Stack habit tracker APP, created due to a request from my dietitian wife, the idea was to keep a record of every intake daily based on the quality of the things we consume. As a user, the goal is to motivate yourself to reduce low-quality foods while you are tracking the process in the app**.
 
+
+
+https://github.com/DodoBey/balancedHabits/assets/77416196/8d9b872e-bb72-4b34-a8da-587e82754209
+
+
+
 ## Tech Stack
 
 ### Backend
